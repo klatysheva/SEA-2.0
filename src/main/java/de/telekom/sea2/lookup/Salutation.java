@@ -1,49 +1,34 @@
 package de.telekom.sea2.lookup;
 
-import java.util.Locale;
-
 public enum Salutation {
 
-    MR,
-    MRS,
-    MISS,
-    OTHER;
+    MR((byte) 0, "Mr."),
+    MRS((byte) 1, "Ms."),
+    MISS((byte) 2, "Miss"),
+    OTHER((byte) 3, "Miss");
 
-    public static Salutation fromString(String str) {
-        switch (str.toLowerCase(Locale.ROOT)) {
-            case "mr":
-            case "mr.":
-            case "mister":
-                return MR;
-            case "mrs":
-            case "mrs.":
-            case "misses":
-                return MRS;
-            case "miss.":
-            case "miss":
-                return MISS;
-            case "Other":
-            case "other":
-                return OTHER;
-            default:
-                throw new IllegalArgumentException("Unexpected value: " + str);
-        }
+    byte byteValue;
+    String stringValue;
+
+    private Salutation(byte b, String s) {
+        this.byteValue = b;
+        this.stringValue = s;
     }
 
-    @Override
-    public String toString() {
-        switch (this) {
-            case MRS:
-                return "Mrs.";
-            case MR:
-                return "Mr.";
-            case MISS:
-                return "Miss.";
-            case OTHER:
-                return "Other";
-            default:
-                throw new IllegalArgumentException("Unexpected case!");
-        }
+    public byte getByteValue() {
+        return byteValue;
     }
 
+    public void setByteValue(byte byteValue) {
+        this.byteValue = byteValue;
+    }
+
+    public String getStringValue() {
+        return stringValue;
+    }
+
+    public void setStringValue(String stringValue) {
+        this.stringValue = stringValue;
+    }
 }
+

@@ -7,7 +7,7 @@ public class Person {
     private Salutation salutation;
     private String firstname;
     private String lastname;
-    private static long personsCounter = 0;
+    private static long personsCounter = 11;
 
     public Person(Salutation salutation, String lastname, String firstname) {
         this.id = ++personsCounter;
