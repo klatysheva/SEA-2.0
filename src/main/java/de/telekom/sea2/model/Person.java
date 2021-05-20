@@ -15,6 +15,12 @@ public class Person {
         this.firstname = firstname;
         this.lastname = lastname;
     }
+    public Person(long id, Salutation salutation, String lastname, String firstname) {
+        this.id = id;
+        this.salutation = salutation;
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;

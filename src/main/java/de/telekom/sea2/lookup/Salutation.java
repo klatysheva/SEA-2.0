@@ -1,5 +1,7 @@
 package de.telekom.sea2.lookup;
 
+import java.util.Locale;
+
 public enum Salutation {
 
     MR((byte) 0, "Mr."),
@@ -29,6 +31,26 @@ public enum Salutation {
 
     public void setStringValue(String stringValue) {
         this.stringValue = stringValue;
+    }
+
+    public static Salutation fromString(String str) {
+        switch (str.toLowerCase(Locale.ROOT)) {
+            case "mr":
+            case "mr.":
+            case "mister":
+                return MR;
+            case "mrs":
+            case "mrs.":
+            case "misses":
+                return MRS;
+            case "miss.":
+            case "miss":
+                return MISS;
+            case "other":
+                return OTHER;
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + str);
+        }
     }
 }
 
