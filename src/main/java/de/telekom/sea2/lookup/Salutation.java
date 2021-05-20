@@ -52,5 +52,20 @@ public enum Salutation {
                 throw new IllegalArgumentException("Unexpected value: " + str);
         }
     }
+
+    public static Salutation fromByte (byte b) {
+        switch (b) {
+            case 0:
+                return MR;
+            case 1:
+                return MRS;
+            case 2:
+                return MISS;
+            case 3:
+                return OTHER;
+            default:
+                throw new IllegalArgumentException("Unexpected value: " + b);
+        }
+    }
 }
 

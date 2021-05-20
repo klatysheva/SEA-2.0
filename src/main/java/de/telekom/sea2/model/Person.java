@@ -7,7 +7,12 @@ public class Person {
     private Salutation salutation;
     private String firstname;
     private String lastname;
-    private static long personsCounter = 11;
+    private static long personsCounter = 0;
+
+    public Person(String firstname, String lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
 
     public Person(Salutation salutation, String lastname, String firstname) {
         this.id = ++personsCounter;
