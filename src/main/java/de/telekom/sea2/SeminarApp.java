@@ -4,18 +4,19 @@ import de.telekom.sea2.model.Person;
 import de.telekom.sea2.persistence.PersonsRepository;
 import de.telekom.sea2.ui.Menu;
 
+import java.io.Closeable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import static de.telekom.sea2.lookup.Salutation.*;
 
-class SeminarApp {
+class SeminarApp implements Closeable {
     final String DRIVER = "com.mysql.cj.jdbc.Driver";
     final String URL = "jdbc:mysql://localhost:3306/seadb?user=seauser&password=seapass";
     Connection connection;
 
-    public void run(String[] args) {
+    public void run(String[] args) throws SQLException {
         PersonsRepository personsRepository = new PersonsRepository(connection);
 
         //for tests only:
@@ -66,5 +67,13 @@ class SeminarApp {
         connection.close();
     }
 
-
+    @Override
+    public void close()  {
+        try {
+            connection.close();
+            System.out.println("Connection is closed.");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
